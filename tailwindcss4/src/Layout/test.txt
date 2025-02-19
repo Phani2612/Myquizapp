@@ -1,0 +1,43 @@
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+// import routes from './routes/Route'
+import Login from './UserFlow/Login'
+import Signup from './UserFlow/Signup'
+import { SnackbarProvider } from 'notistack';
+import Home from './Components/Home';
+import Quiz from './Components/Quiz'
+import Navbar from './Layout/Navbar';
+import Footer from './Layout/Footer';
+import PrivateRoute from './Auth/PrivateRoute';
+
+function App() {
+  return (
+   <SnackbarProvider  maxSnack={1}  anchorOrigin={{
+
+      vertical : 'top',
+      horizontal : 'right'
+   }}>
+     <Router>
+
+<div>
+
+  <Routes>
+
+    <Route path='/' element={<Login />}></Route>
+    <Route path='/signup' element = {<Signup/>} ></Route>
+    <Route path='/home' element = {<PrivateRoute></PrivateRoute>} ></Route>
+    <Route  path='/quiz' element={<Quiz/>} ></Route>
+
+    {/* <Route path='/nav' element = {<Navbar/>} ></Route>
+    <Route path='/foot' element = {<Footer/>} ></Route> */}
+
+  </Routes>
+
+</div>
+
+</Router>
+   </SnackbarProvider>
+  )
+}
+
+export default App
